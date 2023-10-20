@@ -33,10 +33,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PlaceCard(PlaceCardDetails(
-        title: 'City Of mosque, Dhaka',
-        description: 'Dhanmondi, Dhaka............',
-      )),
+      home: Scaffold(
+        body: SafeArea(
+          child: PlaceCard(PlaceCardDetails(
+            title: 'City Of mosque, Dhaka',
+            description: 'Dhanmondi, Dhaka............',
+          )),
+        ),
+      ),
     );
   }
 }
@@ -52,21 +56,37 @@ class PlaceCard extends StatefulWidget {
 
 class _PlaceCardState extends State<PlaceCard> {
   PlaceCardDetails get pcd => widget.pcd;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Size.infinite.width,
-      child: Column(
-        children: [
-          const SizedBox(height: 16),
-          Card(
-            child: Text(
-              pcd.location ?? 'Location Name',
-              style: const TextStyle(fontSize: 24),
-            ),
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        Card(
+          child: Row(
+            children: [
+              Text(
+                pcd.location ?? 'Location',
+                style: const TextStyle(fontSize: 20, shadows: [
+                  Shadow(
+                    color: Color.fromARGB(111, 111, 111, 111),
+                    blurRadius: 2,
+                    offset: Offset(2, 2),
+                  ),
+                ]),
+              ),
+              const Spacer(),
+              Text(
+                pcd.time?.toString() ?? 'Time',
+                style: const TextStyle(fontSize: 18),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          Card(
+        ),
+        const SizedBox(height: 2),
+        SizedBox(
+          width: 300,
+          child: Card(
             child: Column(
               children: [
                 pcd.images != null
@@ -104,8 +124,8 @@ class _PlaceCardState extends State<PlaceCard> {
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
