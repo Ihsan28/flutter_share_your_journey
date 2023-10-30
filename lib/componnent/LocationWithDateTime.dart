@@ -13,7 +13,7 @@ class LocationWithDateTime extends StatefulWidget {
 
 class _LocationWithDateTimeState extends State<LocationWithDateTime> {
   String formatDateTime(DateTime? dateTime) {
-    return DateFormat('yy-MMMM-dd  HH:mm a').format(dateTime!);
+    return DateFormat('yy-MMMM-dd  hh:mm a').format(dateTime!);
   }
 
   @override
@@ -24,11 +24,7 @@ class _LocationWithDateTimeState extends State<LocationWithDateTime> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Icon(
-              Icons.location_on,
-              size: 20,
-              color: Colors.blueGrey,
-            ),
+            const SizedBox(width: 16),
             Row(
               children: [
                 Wrap(
@@ -112,7 +108,7 @@ class _LocationWithDateTimeState extends State<LocationWithDateTime> {
               ],
             ),
             Positioned(
-              top: 20,
+              top: 18,
               right: 1, // Adjust this value to move the circle to the left
               child: Container(
                   width: 17,

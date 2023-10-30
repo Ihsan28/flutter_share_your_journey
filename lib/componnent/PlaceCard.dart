@@ -5,7 +5,7 @@ import 'package:share_your_journey/componnent/LocationWithDateTime.dart';
 import '../model/PlaceCardDetails.dart';
 
 class PlaceCard extends StatefulWidget {
-  const PlaceCard(this.pcd, {super.key});
+  const PlaceCard({super.key, required this.pcd});
 
   final PlaceCardDetails pcd;
 

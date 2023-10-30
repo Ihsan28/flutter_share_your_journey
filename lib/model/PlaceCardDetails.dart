@@ -51,7 +51,7 @@ class PlaceCardDetails {
     PlaceCardDetails(
       title: 'Cox\'s Bazar',
       description: 'World\'s longest natural sandy sea beach.',
-      location: 'Cox\'s Bazar, Bangladesh',
+      location: 'Cox\'s Bazar',
       time: DateTime.now(),
       images: [
         'https://images.unsplash.com/photo-1685429894355-1138741e58c6?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D',
@@ -62,7 +62,7 @@ class PlaceCardDetails {
       title: 'Sundarbans Mangrove Forest',
       description:
           'Largest mangrove forest in the world and home to the Bengal tiger.',
-      location: 'Khulna, Bangladesh',
+      location: 'Khulna',
       time: DateTime.now(),
       images: [
         'https://images.unsplash.com/photo-1698117030662-2a5c5243efee?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D',

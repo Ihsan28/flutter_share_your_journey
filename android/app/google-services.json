@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18266098334",
+    "project_id": "shareyourjourney-5dcb0",
+    "storage_bucket": "shareyourjourney-5dcb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18266098334:android:9d5b2b8359c09cb371098f",
+        "android_client_info": {
+          "package_name": "com.ihsan.share_your_journey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZvRyUwOaVMZUz8eemXaU3MHjp65udaEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
