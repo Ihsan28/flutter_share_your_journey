@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:share_your_journey/model/PlaceCardDetails.dart';
 
+import 'LocationWithDateTime.dart';
+
 class CardWithPlaceInfo extends StatefulWidget {
   const CardWithPlaceInfo({super.key, required this.pcd});
   final PlaceCardDetails pcd;
@@ -14,14 +16,16 @@ class _CardWithPlaceInfoState extends State<CardWithPlaceInfo> {
   final PlaceCardDetails pcd;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Container(
+      width: 200,
+      padding: const EdgeInsets.all(8.0),
       child: Card(
         color: Colors.cyan[50],
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
           child: Column(
             children: [
+              LocationWithDateTime(location: pcd.location, time: pcd.time),
               const SizedBox(height: 5),
               pcd.images != null
                   ? SizedBox(

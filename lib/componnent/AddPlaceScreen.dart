@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:location/location.dart';
 import 'package:video_player/video_player.dart';
 
 void main() => runApp(MyApp());
@@ -25,11 +27,13 @@ class AddPlaceScreen extends StatefulWidget {
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _locationController = TextEditingController();
+  LatLng? _selectedLocation;
   DateTime? _selectedDate;
   List<XFile>? _selectedImages = [];
   XFile? _selectedVideo;
   VideoPlayerController? _videoPlayerController;
+  late GoogleMapController _mapController;
+  final Location _location = Location();
 
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
@@ -61,11 +65,30 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     super.dispose();
   }
 
+  _getCurrentLocation() async {
+    try {
+      final LocationData _locationData = await _location.getLocation();
+      setState(() {
+        _selectedLocation =
+            LatLng(_locationData.latitude!, _locationData.longitude!);
+      });
+      _mapController.moveCamera(CameraUpdate.newLatLng(_selectedLocation!));
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add New Place'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.my_location),
+            onPressed: _getCurrentLocation,
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +96,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
             ),
             const SizedBox(height: 16),
             TextField(
@@ -81,10 +104,34 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               decoration: const InputDecoration(labelText: 'Description'),
             ),
             const SizedBox(height: 16),
-            TextField(
-              controller: _locationController,
-              decoration: const InputDecoration(labelText: 'Location'),
-            ),
+            _selectedLocation == null
+                ? ElevatedButton(
+                    onPressed: _getCurrentLocation,
+                    child: const Text('Select Current Location'),
+                  )
+                : SizedBox(
+                    height: 200,
+                    child: GoogleMap(
+                      initialCameraPosition: CameraPosition(
+                        target: _selectedLocation!,
+                        zoom: 14.4746,
+                      ),
+                      onMapCreated: (GoogleMapController controller) {
+                        _mapController = controller;
+                      },
+                      onTap: (LatLng location) {
+                        setState(() {
+                          _selectedLocation = location;
+                        });
+                      },
+                      markers: {
+                        Marker(
+                          markerId: const MarkerId('selectedLocation'),
+                          position: _selectedLocation!,
+                        ),
+                      },
+                    ),
+                  ),
             const SizedBox(height: 16),
             ListTile(
               title: Text(_selectedDate == null
@@ -121,8 +168,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             const SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: _pickVideo,
-              icon: Icon(Icons.videocam),
-              label: Text('Add Video'),
+              icon: const Icon(Icons.videocam),
+              label: const Text('Add Video'),
             ),
             if (_selectedVideo != null)
               SizedBox(

@@ -62,7 +62,7 @@ class PlaceCardDetails {
       title: 'Sundarbans Mangrove Forest',
       description:
           'Largest mangrove forest in the world and home to the Bengal tiger.',
-      location: 'Khulna',
+      location: 'Sundarbans Mangrove Forest',
       time: DateTime.now(),
       images: [
         'https://images.unsplash.com/photo-1698117030662-2a5c5243efee?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D',
