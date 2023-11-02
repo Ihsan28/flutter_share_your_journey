@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'componnent/HomeScreen.dart';
 import 'componnent/LoginScreen.dart';
+import 'componnent/SplashScreen.dart'; // Make sure to create this file
 import 'firebase_options.dart';
 
 void main() async {
-  // Ensure that Firebase is initialized
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -15,18 +15,14 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Share Your Journey',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         useMaterial3: true,
@@ -36,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => const HomeScreen(),
         '/login': (context) => const LoginScreen(),
       },
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }

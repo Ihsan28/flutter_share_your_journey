@@ -50,16 +50,8 @@ class FirebaseServices {
   }
 
   Future<void> signout() async {
-    if (user?.providerData[0].providerId == 'google.com') {
-      FirebaseAuth.instance.signOut();
-      await _googleSignIn.disconnect();
-      if (_auth.isSignInWithEmailLink(user!.email!)) {
-        await _auth.signOut();
-      }
-      if (await _googleSignIn.isSignedIn()) {
-        await _googleSignIn.signOut();
-      }
-      user = null;
-    }
+    await _auth.signOut();
+    await _googleSignIn.signOut();
+    user = null;
   }
 }

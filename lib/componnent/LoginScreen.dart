@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:share_your_journey/componnent/HomeScreen.dart';
 
 import 'FirebaseServices.dart';
+import 'SignUpScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _redirectToHomeIfLoggedIn();
   }
 
   Future<void> _redirectToHomeIfLoggedIn() async {
@@ -88,11 +90,42 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            // Add your text logo here
+            ShaderMask(
+              shaderCallback: (bounds) => const LinearGradient(
+                colors: [Colors.blue, Colors.purple, Colors.red],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ).createShader(bounds),
+              child: Text(
+                'SHARE YOUR JOURNEY',
+                style: GoogleFonts.shadowsIntoLight(
+                  // Lato is a good choice for a clean, modern look
+                  textStyle: TextStyle(
+                    fontSize: 34.0, // Adjust the size accordingly
+                    fontWeight: FontWeight.bold, // Use bold font weight
+                    color: Colors.green, // Choose a color that fits your theme
+                    letterSpacing: 1.0, // Space out the letters just a bit
+                    shadows: [
+                      Shadow(
+                        offset: const Offset(3.0, 3.0),
+                        blurRadius: 3.0,
+                        color: Colors.black.withOpacity(0.25), // Soft shadow
+                      ),
+                    ],
+                  ),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+
+            const SizedBox(
+                height: 32), // Add some space between logo and text fields
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: 'Email'),
@@ -115,6 +148,36 @@ class _LoginScreenState extends State<LoginScreen> {
               icon: const Icon(Icons.account_circle),
               label: const Text('Continue with Google'),
               onPressed: _signInWithGoogle,
+            ),
+
+            // Add a RichText for a more subtle 'sign up' prompt
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(color: Colors.black, fontSize: 14),
+                  children: <TextSpan>[
+                    const TextSpan(text: "Don't have an account? "),
+                    TextSpan(
+                      text: 'Sign Up',
+                      style: const TextStyle(
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          // Navigate to the sign-up screen when the text is tapped
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpScreen()),
+                          );
+                        },
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

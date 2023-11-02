@@ -15,7 +15,19 @@ class _SideDrawerState extends State<SideDrawer> {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        final User? _user = FirebaseServices.user;
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Something went wrong!'),
+            );
+          }
+        }
+
+        final User? _user = snapshot.data;
 
         return Drawer(
           child: ListView(
@@ -53,9 +65,8 @@ class _SideDrawerState extends State<SideDrawer> {
                 title: const Text('Logout'),
                 onTap: () async {
                   await FirebaseServices().signout();
-                  if (mounted) {
-                    Navigator.of(context).pushReplacementNamed('/login');
-                  }
+
+                  Navigator.of(context).pushReplacementNamed('/login');
                 },
               ),
             ],
