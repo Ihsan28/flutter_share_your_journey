@@ -62,13 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _signInWithEmailAndPassword() async {
     try {
-      final bool isSignedIn =
-          await FirebaseServices().signInWithEmailAndPassword(
+      final User? user = await FirebaseServices().signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
-      if (isSignedIn) {
+      if (user!.emailVerified) {
         // Check if the widget is still in the widget tree
         _redirectToHomeIfLoggedIn();
       } else {

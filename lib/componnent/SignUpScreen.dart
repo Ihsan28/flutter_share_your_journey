@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:share_your_journey/componnent/FirebaseServices.dart';
 
 import 'HomeScreen.dart';
 
@@ -58,16 +59,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
         final String password = _passwordController.text;
 
         // Create the user with FirebaseAuth
-        UserCredential userCredential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        User? user = await FirebaseServices().signUpWithEmailAndPassword(
           email: _emailController.text,
           password: password,
         );
 
         // If the FirebaseAuth signup is successful, upload the user details to Firestore
-        if (userCredential.user != null) {
+        if (user != null) {
+          print('Sign up successful');
           // Get the user's UID from FirebaseAuth
-          String uid = userCredential.user!.uid;
+          String uid = user.uid;
+
           String genderString = _selectedGender != null
               ? _selectedGender.toString().split('.').last
               : '';
@@ -119,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to sign up: $e')),
         );
+        print(e);
       }
     }
   }

@@ -33,7 +33,7 @@ class FirebaseServices {
     return null;
   }
 
-  Future<bool> signInWithEmailAndPassword(
+  Future<User?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       final UserCredential authResult = await _auth.signInWithEmailAndPassword(
@@ -41,12 +41,27 @@ class FirebaseServices {
         password: password,
       );
       user = authResult.user!;
-      return true;
+      return user;
     } catch (error) {
       print(error);
-      // Handle errors here
     }
-    return false;
+    return null;
+  }
+
+  Future<User?> signUpWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final UserCredential authResult =
+          await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      user = authResult.user!;
+      return user;
+    } catch (error) {
+      print(error);
+    }
+    return null;
   }
 
   Future<void> signout() async {
