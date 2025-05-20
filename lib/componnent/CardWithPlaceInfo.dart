@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:share_your_journey/model/PlaceCardDetails.dart';
+import 'package:path_share/model/PlaceCardDetails.dart';
 
 import 'LocationWithDateTime.dart';
 

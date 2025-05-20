@@ -2,17 +2,30 @@
   "project_info": {
     "project_number": "18266098334",
     "project_id": "shareyourjourney-5dcb0",
-    "storage_bucket": "shareyourjourney-5dcb0.appspot.com"
+    "storage_bucket": "shareyourjourney-5dcb0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:18266098334:android:9d5b2b8359c09cb371098f",
+        "mobilesdk_app_id": "1:18266098334:android:63b0f7933569d6d371098f",
         "android_client_info": {
-          "package_name": "com.ihsan.share_your_journey"
+          "package_name": "com.ihsan.flutter_share_your_journey"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "18266098334-qadj5l1583qf1l94ec71pdjhunb7m7u3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ihsan.flutter_share_your_journey",
+            "certificate_hash": "a51e4135ac6a92a81e1d446167942fbe023ecf8a"
+          }
+        },
+        {
+          "client_id": "18266098334-17v2phentdjs5mpb75o91kvtfh3uvc5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBZvRyUwOaVMZUz8eemXaU3MHjp65udaEc"
@@ -20,7 +33,63 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18266098334-17v2phentdjs5mpb75o91kvtfh3uvc5e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "18266098334-6icmi03in2bvcvmrp37d9381d6ai37eg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ihsan.shareYourJourney"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18266098334:android:94fbd3ce75c9fb9d71098f",
+        "android_client_info": {
+          "package_name": "com.ihsan.path_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18266098334-hrodq1mmhllvna26e7req9der16khvr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ihsan.path_share",
+            "certificate_hash": "a679098fe444ac0c96aae79656d451abe1d8675c"
+          }
+        },
+        {
+          "client_id": "18266098334-17v2phentdjs5mpb75o91kvtfh3uvc5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZvRyUwOaVMZUz8eemXaU3MHjp65udaEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18266098334-17v2phentdjs5mpb75o91kvtfh3uvc5e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "18266098334-6icmi03in2bvcvmrp37d9381d6ai37eg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ihsan.shareYourJourney"
+              }
+            }
+          ]
         }
       }
     }

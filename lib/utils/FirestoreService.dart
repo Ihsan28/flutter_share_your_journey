@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:share_your_journey/model/Journey.dart';
+import 'package:path_share/model/Journey.dart';
 
 import '../model/PlaceCardDetails.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:share_your_journey/componnent/JourneyBottomSheet.dart';
+import 'package:path_share/componnent/JourneyBottomSheet.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 import '../model/Journey.dart';

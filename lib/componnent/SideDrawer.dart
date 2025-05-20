@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:share_your_journey/componnent/FirebaseServices.dart';
+import 'package:path_share/componnent/FirebaseServices.dart';
 
 class SideDrawer extends StatefulWidget {
   const SideDrawer({super.key});

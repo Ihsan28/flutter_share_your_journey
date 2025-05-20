@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_your_journey/componnent/HomeScreen.dart';
+import 'package:path_share/componnent/HomeScreen.dart';
 
 import 'FirebaseServices.dart';
 import 'SignUpScreen.dart';
